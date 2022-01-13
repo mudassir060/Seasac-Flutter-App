@@ -104,8 +104,11 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     List<Widget> tabPages = [
+      Collection (          Name: widget.Name,
+          Email: widget.Email,
+          PhoneNo: widget.PhoneNo,
+          ),
       Distribution(),
-      Collection (),
       ProfilePage(
           Name: widget.Name,
           Email: widget.Email,
@@ -133,23 +136,23 @@ class _BottomBarState extends State<BottomBar> {
                 style: TextStyle(color: Colors.white),
               ),
           centerTitle: true,
-          leading: IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => BottomBar(
-                      Name: widget.Name,
-                      Email: widget.Email,
-                      PhoneNo: widget.PhoneNo,
-                      UID: widget.UID,
-                    ),
-                  ),
-                );
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-              )),
+          // leading: IconButton(
+          //     onPressed: () {
+          //       Navigator.push(
+          //         context,
+          //         MaterialPageRoute(
+          //           builder: (context) => BottomBar(
+          //             Name: widget.Name,
+          //             Email: widget.Email,
+          //             PhoneNo: widget.PhoneNo,
+          //             UID: widget.UID,
+          //           ),
+          //         ),
+          //       );
+          //     },
+          //     icon: const Icon(
+          //       Icons.arrow_back,
+          //     )),
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: _pageIndex,
@@ -157,9 +160,9 @@ class _BottomBarState extends State<BottomBar> {
           backgroundColor: Colors.white,
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-                icon: Icon(Icons.home), title: Text("Home")),
+                icon: Icon(Icons.home), title: Text("Collection")),
             BottomNavigationBarItem(
-                icon: Icon(Icons.dashboard), title: Text("Dashboard")),
+                icon: Icon(Icons.dashboard), title: Text("Distribution")),
             BottomNavigationBarItem(
                 icon: Icon(Icons.person), title: Text("Profile")),
           ],
