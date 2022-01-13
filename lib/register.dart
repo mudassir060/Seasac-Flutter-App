@@ -16,11 +16,10 @@ class Registration extends StatefulWidget {
 }
 
 class _RegistrationState extends State<Registration> {
-  final TextEditingController usernamecontroller = TextEditingController();
-  final TextEditingController useremailcontroller = TextEditingController();
-  final TextEditingController phonenocontroller = TextEditingController();
-  final TextEditingController otpcontroller = TextEditingController();
-  final TextEditingController userpasswordcontroller = TextEditingController();
+  final TextEditingController usernamecontroller = TextEditingController(text: 'Mudassir Mukhtar');
+  final TextEditingController useremailcontroller = TextEditingController(text: 'abc@gmail.com');
+  final TextEditingController phonenocontroller = TextEditingController(text: '03454335400');
+  final TextEditingController userpasswordcontroller = TextEditingController(text: 'qwerty');
   String UID = '';
   bool isCheck = false;
   bool NoData = false;
@@ -36,6 +35,7 @@ class _RegistrationState extends State<Registration> {
       final String useremail = useremailcontroller.text;
       final String PhoneNo = phonenocontroller.text;
       final String userpassword = userpasswordcontroller.text;
+      bool Admin = false;
       FirebaseAuth auth = FirebaseAuth.instance;
       FirebaseFirestore firestore = FirebaseFirestore.instance;
       try {
@@ -53,12 +53,8 @@ class _RegistrationState extends State<Registration> {
             "username": username,
             "email": useremail,
             "PhoneNo": PhoneNo,
-            "password": userpassword,
             "UID": user.user.uid,
-            "Available_Balance": 0,
-            "Panding Balance": 0,
-            "Daily Ads": 0,
-            "Total Point": 0,
+            "Admin": Admin
           });
 
           Navigator.push(
@@ -87,26 +83,25 @@ class _RegistrationState extends State<Registration> {
           looding = false;
         });
         print("Error ==============>$e");
-              Widget okButton = TextButton(
-        child: Text("OK"),
-        onPressed: () {
-          Navigator.of(context).pop(); // dismiss dialog
-        },
-      );
-      AlertDialog alert = AlertDialog(
-        title: Center(child: Text("Error")),
-        content: Text("${e.toString()}"),
-        actions: [
-          okButton,
-        ],
-      );
-      showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return alert;
-        },
-      );
-   
+        Widget okButton = TextButton(
+          child: Text("OK"),
+          onPressed: () {
+            Navigator.of(context).pop(); // dismiss dialog
+          },
+        );
+        AlertDialog alert = AlertDialog(
+          title: Center(child: Text("Error")),
+          content: Text("${e.toString()}"),
+          actions: [
+            okButton,
+          ],
+        );
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return alert;
+          },
+        );
       }
       // print([username, useremail, userpassword]);
     }
@@ -145,14 +140,14 @@ class _RegistrationState extends State<Registration> {
                           Container(
                             height: 150,
                             width: 220,
-                            decoration: BoxDecoration(
-                              image: const DecorationImage(
-                                image: AssetImage('images/Logo.png'),
-                                fit: BoxFit.fill,
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                              shape: BoxShape.rectangle,
-                            ),
+                            // decoration: BoxDecoration(
+                            //   image: const DecorationImage(
+                            //     image: AssetImage('images/Logo.png'),
+                            //     fit: BoxFit.fill,
+                            //   ),
+                            //   borderRadius: BorderRadius.circular(10),
+                            //   shape: BoxShape.rectangle,
+                            // ),
                           ),
 
                           const SizedBox(height: 10),

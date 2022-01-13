@@ -25,7 +25,7 @@ class _DistributionState extends State<Distribution> {
       floatingActionButton: FloatingActionButton(
         onPressed: (){},
         tooltip: 'Distribution',
-        child: const Icon(Icons.),
+        child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

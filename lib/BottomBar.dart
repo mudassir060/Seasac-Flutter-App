@@ -128,9 +128,9 @@ class _BottomBarState extends State<BottomBar> {
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text(
-                "data}",
-                style: const TextStyle(color: Colors.white),
+          title: const Text(
+                "Seasac",
+                style: TextStyle(color: Colors.white),
               ),
           centerTitle: true,
           leading: IconButton(
