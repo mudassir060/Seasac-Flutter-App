@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "826536515981",
+    "project_id": "seasac-a9483",
+    "storage_bucket": "seasac-a9483.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:826536515981:android:7062c8e96b095faff1c5c4",
+        "android_client_info": {
+          "package_name": "com.example.seasac"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "826536515981-p40fska8mg1futn8u3bao1t15uc4joi7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.seasac",
+            "certificate_hash": "3243a9aefb1e5e0cc92dbb808b4e63314ee08fda"
+          }
+        },
+        {
+          "client_id": "826536515981-ekr9f4aiv1p6obqcc0khq4nrb61sc79n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDhtCAIbznRGZkHQDpP_VQJ67eZqJRr7Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "826536515981-ekr9f4aiv1p6obqcc0khq4nrb61sc79n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
