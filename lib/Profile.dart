@@ -1,9 +1,10 @@
-// ignore_for_file: non_constant_identifier_names, file_names, must_be_immutable
+// ignore_for_file: non_constant_identifier_names, file_names, must_be_immutable, avoid_function_literals_in_foreach_calls
 
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
-    final String Name;
+  final String Name;
   final String Email;
   final String UID;
   final String PhoneNo;
@@ -11,9 +12,9 @@ class ProfilePage extends StatefulWidget {
   const ProfilePage({
     Key? key,
     required this.Name,
-      required this.Email,
-      required this.PhoneNo,
-      required this.UID,
+    required this.Email,
+    required this.PhoneNo,
+    required this.UID,
   }) : super(key: key);
 
   @override
@@ -28,7 +29,26 @@ class _ProfilePageState extends State<ProfilePage> {
       "https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1214428300?k=6&m=1214428300&s=170667a&w=0&h=hMQs-822xLWFz66z3Xfd8vPog333rNFHU6Q_kc9Sues=";
   String PhoneNo = "03XX-XXXXXXX";
   String About = "I am Muslim";
+  FirebaseFirestore firestore = FirebaseFirestore.instance;
 
+  var Collection = 0;
+  data() async {
+    await firestore
+        .collection("Collection")
+        .get()
+        .then((snapshot) => snapshot.docs.forEach((element) {
+              var fdata = element.data();
+            setState(() {
+              Collection = int.parse(fdata["Money"]) + Collection;
+            });
+            }));
+    print(
+        "++++++++++++++++++Firebase Totel colection=====> $Collection+++++++++++++++++++++");
+  }
+ void initState() {
+    super.initState();
+    WidgetsBinding.instance?.addPostFrameCallback((_) => data());
+  }
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,18 +56,20 @@ class _ProfilePageState extends State<ProfilePage> {
       home: Scaffold(
         body: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
               Center(
                 child: Container(
                   height: 100,
                   width: 100,
-                  child: const Icon(Icons.account_circle_outlined,
-                  color: Colors.black38,
-                  size: 120,),
+                  child: const Icon(
+                    Icons.account_circle_outlined,
+                    color: Colors.black38,
+                    size: 120,
+                  ),
                   // decoration: BoxDecoration(
                   //   image: DecorationImage(
                   //       image: NetworkImage(photoUrl),
@@ -71,9 +93,14 @@ class _ProfilePageState extends State<ProfilePage> {
                 titleText: "Phone No",
                 text: widget.PhoneNo,
               ),
-          ],
-        ),
-            )),
+                            UserDataField(
+                icon: Icons.money,
+                titleText: "Total Collection",
+                text: "$Collection",
+              ),
+            ],
+          ),
+        )),
       ),
     );
   }
@@ -87,7 +114,7 @@ class Line extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 20, bottom: 20),
       child: Container(
-          constraints:const  BoxConstraints(maxWidth: 600),
+          constraints: const BoxConstraints(maxWidth: 600),
           height: 1,
           color: Colors.black12),
     );
@@ -120,7 +147,7 @@ class _DataState extends State<Data> {
           size: 40,
         ),
         Container(
-          constraints:const  BoxConstraints(maxWidth: 600),
+          constraints: const BoxConstraints(maxWidth: 600),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
@@ -130,7 +157,7 @@ class _DataState extends State<Data> {
                 Text(
                   widget.titel,
                   textAlign: TextAlign.left,
-                  style:const  TextStyle(
+                  style: const TextStyle(
                     fontSize: 15,
                     color: Colors.black38,
                   ),
@@ -138,7 +165,7 @@ class _DataState extends State<Data> {
                 Text(
                   widget.subtitel,
                   textAlign: TextAlign.left,
-                  style:const  TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                   ),
                 ),
@@ -151,17 +178,17 @@ class _DataState extends State<Data> {
   }
 }
 
-
-
-
-
 class UserDataField extends StatelessWidget {
   IconData icon;
   String titleText;
   String text;
 
   UserDataField(
-      {Key? key, required this.icon, required this.titleText, required this.text}) : super(key: key);
+      {Key? key,
+      required this.icon,
+      required this.titleText,
+      required this.text})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

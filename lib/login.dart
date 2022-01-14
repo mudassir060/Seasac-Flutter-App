@@ -141,7 +141,7 @@ class _LoginState extends State<Login> {
                         child: Column(
                           children: [
                             Container(
-                              height: 150,
+                              height: 220,
                               width: 220,
                               decoration: BoxDecoration(
                                 image: const DecorationImage(

@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:seasac/SplashScreen.dart';
 import 'package:seasac/addCollection.dart';
 import 'package:seasac/login.dart';
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
 
             // Once complete, show your application
             if (snapshot.connectionState == ConnectionState.done) {
-              return const Login();
+              return SplashScreen();
             }
 
             // Otherwise, show something whilst waiting for initialization to complete

@@ -138,16 +138,16 @@ class _RegistrationState extends State<Registration> {
                         children: [
                           // +++++++++++++++++++++++++++++++++++++++Logo Image+++++++++++++++++++++++++++++++++++++++++++++++++++++++
                           Container(
-                            height: 150,
+                            height: 220,
                             width: 220,
-                            // decoration: BoxDecoration(
-                            //   image: const DecorationImage(
-                            //     image: AssetImage('images/Logo.png'),
-                            //     fit: BoxFit.fill,
-                            //   ),
-                            //   borderRadius: BorderRadius.circular(10),
-                            //   shape: BoxShape.rectangle,
-                            // ),
+                            decoration: BoxDecoration(
+                              image: const DecorationImage(
+                                image: AssetImage('images/Logo.png'),
+                                fit: BoxFit.fill,
+                              ),
+                              borderRadius: BorderRadius.circular(10),
+                              shape: BoxShape.rectangle,
+                            ),
                           ),
 
                           const SizedBox(height: 10),

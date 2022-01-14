@@ -51,7 +51,7 @@ class _CollectionState extends State<Collection> {
                           width: 60,
                           child: Center(
                             child: Text(
-                              "#",
+                              "No",
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,

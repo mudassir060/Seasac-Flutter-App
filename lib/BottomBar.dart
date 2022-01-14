@@ -104,11 +104,16 @@ class _BottomBarState extends State<BottomBar> {
   @override
   Widget build(BuildContext context) {
     List<Widget> tabPages = [
-      Collection (          Name: widget.Name,
-          Email: widget.Email,
-          PhoneNo: widget.PhoneNo,
-          ),
-      Distribution(),
+      Collection(
+        Name: widget.Name,
+        Email: widget.Email,
+        PhoneNo: widget.PhoneNo,
+      ),
+      Distribution(
+        Name: widget.Name,
+        Email: widget.Email,
+        PhoneNo: widget.PhoneNo,
+      ),
       ProfilePage(
           Name: widget.Name,
           Email: widget.Email,
@@ -132,9 +137,9 @@ class _BottomBarState extends State<BottomBar> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text(
-                "Seasac",
-                style: TextStyle(color: Colors.white),
-              ),
+            "Seasac",
+            style: TextStyle(color: Colors.white),
+          ),
           centerTitle: true,
           // leading: IconButton(
           //     onPressed: () {

@@ -2,21 +2,21 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class addCollection extends StatefulWidget {
+class addDistribution extends StatefulWidget {
   final String Name;
   final String Email;
   final String PhoneNo;
-  addCollection({
+  addDistribution({
     required this.Name,
     required this.Email,
     required this.PhoneNo,
   });
 
   @override
-  _addCollectionState createState() => _addCollectionState();
+  _addDistributionState createState() => _addDistributionState();
 }
 
-class _addCollectionState extends State<addCollection> {
+class _addDistributionState extends State<addDistribution> {
   int largeindex = 0;
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class _addCollectionState extends State<addCollection> {
     }
 
     data();
-    // print("================addCollection widget=================>");
+    // print("================addDistribution widget=================>");
     // print(widget.Name);
     // print(widget.Email);
     // print(widget.PhoneNo);
