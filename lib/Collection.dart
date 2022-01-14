@@ -44,7 +44,7 @@ class _CollectionState extends State<Collection> {
                 children: [
                   // // // // // // // // // heading Row  // // // // // // // // //
                   Container(
-                    width: vwidth - 15,
+                    width: vwidth,
                     child: Row(
                       children: [
                         Container(
@@ -97,7 +97,8 @@ class _CollectionState extends State<Collection> {
                   ),
                   // // // // // // // // // List Row  // // // // // // // // //
                   Container(
-                    height: vhight - 300,
+                    width: vwidth,
+                    height: vhight - 200,
                     child: StreamBuilder<QuerySnapshot>(
                       stream: _CollectionStream,
                       builder: (BuildContext context,
@@ -105,7 +106,6 @@ class _CollectionState extends State<Collection> {
                         if (snapshot.hasError) {
                           return Text('Something went wrong');
                         }
-
                         if (snapshot.connectionState ==
                             ConnectionState.waiting) {
                           return const Center(
@@ -123,44 +123,51 @@ class _CollectionState extends State<Collection> {
                               .map((DocumentSnapshot document) {
                             Map<String, dynamic> data =
                                 document.data()! as Map<String, dynamic>;
-                            for (var i = 0; i < data.length; i++) {
-                              data['Money'];
-                              // setState(() {
-                              //   Money = data['Money']+Money;
-                              // });
-                            }
-                            return RefRow(
-                              No: data['index'],
-                              Name: data['Donate'],
-                              Number: data['DPhone'],
-                              vwidth: vwidth,
-                              ID: data['Money'],
+                            return Column(
+                              children: [
+                                RefRow(
+                                  No: data['index'],
+                                  Name: data['Donate'],
+                                  Number: data['DPhone'],
+                                  vwidth: vwidth,
+                                  ID: data['Money'],
+                                ),
+                                RefRow(
+                                  No: data['index'],
+                                  Name: data['Donate'],
+                                  Number: data['DPhone'],
+                                  vwidth: vwidth,
+                                  ID: data['Money'],
+                                ),       RefRow(
+                                  No: data['index'],
+                                  Name: data['Donate'],
+                                  Number: data['DPhone'],
+                                  vwidth: vwidth,
+                                  ID: data['Money'],
+                                ),       RefRow(
+                                  No: data['index'],
+                                  Name: data['Donate'],
+                                  Number: data['DPhone'],
+                                  vwidth: vwidth,
+                                  ID: data['Money'],
+                                ),
+                                RefRow(
+                                  No: data['index'],
+                                  Name: data['Donate'],
+                                  Number: data['DPhone'],
+                                  vwidth: vwidth,
+                                  ID: data['Money'],
+                                ),
+                              ],
                             );
                           }).toList(),
                         );
                       },
                     ),
                   ),
-
-                  SizedBox(height: 5)
                 ],
               ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(10),
-                    topRight: Radius.circular(10),
-                    bottomLeft: Radius.circular(10),
-                    bottomRight: Radius.circular(10)),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: const Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              )),
+              ),
         ),
       ),
       floatingActionButton: FloatingActionButton(

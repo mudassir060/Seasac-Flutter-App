@@ -32,23 +32,40 @@ class _ProfilePageState extends State<ProfilePage> {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   var Collection = 0;
+  var Distribution = 0;
+  var Balance = 0;
+
   data() async {
     await firestore
         .collection("Collection")
         .get()
         .then((snapshot) => snapshot.docs.forEach((element) {
               var fdata = element.data();
-            setState(() {
-              Collection = int.parse(fdata["Money"]) + Collection;
-            });
+              setState(() {
+                Collection = int.parse(fdata["Money"]) + Collection;
+              });
             }));
     print(
         "++++++++++++++++++Firebase Totel colection=====> $Collection+++++++++++++++++++++");
+    await firestore
+        .collection("Distribution")
+        .get()
+        .then((snapshot) => snapshot.docs.forEach((element) {
+              var fdata = element.data();
+              setState(() {
+                Distribution = int.parse(fdata["Money"]) + Distribution;
+              });
+            }));
+    print(
+        "++++++++++++++++++Firebase Totel colection=====> $Distribution+++++++++++++++++++++");
+    Balance = Collection - Distribution;
   }
- void initState() {
+
+  void initState() {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((_) => data());
   }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -61,23 +78,6 @@ class _ProfilePageState extends State<ProfilePage> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
-                child: Container(
-                  height: 100,
-                  width: 100,
-                  child: const Icon(
-                    Icons.account_circle_outlined,
-                    color: Colors.black38,
-                    size: 120,
-                  ),
-                  // decoration: BoxDecoration(
-                  //   image: DecorationImage(
-                  //       image: NetworkImage(photoUrl),
-                  //       fit: BoxFit.cover),
-                  //   shape: BoxShape.circle,
-                  // ),
-                ),
-              ),
               UserDataField(
                 icon: Icons.account_circle_outlined,
                 titleText: "User Name",
@@ -93,10 +93,20 @@ class _ProfilePageState extends State<ProfilePage> {
                 titleText: "Phone No",
                 text: widget.PhoneNo,
               ),
-                            UserDataField(
+              UserDataField(
                 icon: Icons.money,
                 titleText: "Total Collection",
                 text: "$Collection",
+              ),
+              UserDataField(
+                icon: Icons.money,
+                titleText: "Total Distribution",
+                text: "$Distribution",
+              ),
+              UserDataField(
+                icon: Icons.money,
+                titleText: "Total Balance",
+                text: "$Balance",
               ),
             ],
           ),

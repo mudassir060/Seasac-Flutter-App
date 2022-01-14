@@ -23,7 +23,7 @@ class _addDistributionState extends State<addDistribution> {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     data() async {
       await firestore
-          .collection("Collection")
+          .collection("Distribution")
           .get()
           .then((snapshot) => snapshot.docs.forEach((element) {
                 var fdata = element.data();
@@ -58,7 +58,7 @@ class _addDistributionState extends State<addDistribution> {
     final TextEditingController Moneycontroller = TextEditingController();
     final TextEditingController DPhonecontroller = TextEditingController();
 
-    void UploadCollection() async {
+    void UploadDistribution() async {
       String Donate = donatorcontroller.text;
       var Money = Moneycontroller.text;
       String DPhone = DPhonecontroller.text;
@@ -68,7 +68,7 @@ class _addDistributionState extends State<addDistribution> {
         String formattedDate = DateFormat('kk:mm:ss EEE d MMM').format(now);
         print(formattedDate);
         await firestore
-            .collection("Collection")
+            .collection("Distribution")
             .doc(UserName + formattedDate)
             .set({
           "username": UserName,
@@ -166,7 +166,7 @@ class _addDistributionState extends State<addDistribution> {
                   'Upload',
                   // style: TextStyle(fontSize: 10.0),
                 ),
-                onPressed: UploadCollection,
+                onPressed: UploadDistribution,
               ),
             ],
           ),

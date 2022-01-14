@@ -34,22 +34,24 @@ class _SplashScreenState extends State<SplashScreen> {
           ),
           // ignore: avoid_unnecessary_containers
           Container(
-              child: const CircularProgressIndicator(
-            color: Colors.green,
+              child: const LinearProgressIndicator(
+                minHeight: 20,
+                backgroundColor: Colors.black12,
+            color: Colors.black54,
           )),
-          // ignore: avoid_unnecessary_containers
-          Padding(
-            padding: const EdgeInsets.only(left:108.0, top: 30),
-            child: Container(
-                child: const Text(
-              "SEASAC Is Loading",
-              style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-              ),
-            )),
-          ),
+          // Padding(
+          //   padding: const EdgeInsets.only(left:108.0, top: 30),
+          //   child: Container(
+          //       child: const Text(
+          //     "SEASAC Is Loading",
+          //     style: TextStyle(
+          //       fontSize: 20.0,
+          //       color: Colors.black,
+          //       fontWeight: FontWeight.bold,
+          //     ),
+          //   )),
+          // ),
+        
         ],
       ),
     ));
