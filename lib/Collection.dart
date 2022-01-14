@@ -19,7 +19,7 @@ class Collection extends StatefulWidget {
 class _CollectionState extends State<Collection> {
   final Stream<QuerySnapshot> _CollectionStream = FirebaseFirestore.instance
       .collection('Collection')
-      .orderBy('index', descending: true)
+      .orderBy('index', descending: false)
       // .where('index', isGreaterThan: '3')
       // .limitToLast(2)
       .snapshots();
@@ -73,7 +73,7 @@ class _CollectionState extends State<Collection> {
                           width: 50,
                           child: Center(
                             child: Text(
-                              "ID",
+                              "Payment",
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -116,6 +116,7 @@ class _CollectionState extends State<Collection> {
                         var vwidth = MediaQuery.of(context).size.width;
                         var vhight = MediaQuery.of(context).size.height;
                         return ListView(
+                  shrinkWrap: true,
                           physics: const BouncingScrollPhysics(
                               parent: AlwaysScrollableScrollPhysics()),
                           controller: ScrollController(),
@@ -130,33 +131,7 @@ class _CollectionState extends State<Collection> {
                                   Name: data['Donate'],
                                   Number: data['DPhone'],
                                   vwidth: vwidth,
-                                  ID: data['Money'],
-                                ),
-                                RefRow(
-                                  No: data['index'],
-                                  Name: data['Donate'],
-                                  Number: data['DPhone'],
-                                  vwidth: vwidth,
-                                  ID: data['Money'],
-                                ),       RefRow(
-                                  No: data['index'],
-                                  Name: data['Donate'],
-                                  Number: data['DPhone'],
-                                  vwidth: vwidth,
-                                  ID: data['Money'],
-                                ),       RefRow(
-                                  No: data['index'],
-                                  Name: data['Donate'],
-                                  Number: data['DPhone'],
-                                  vwidth: vwidth,
-                                  ID: data['Money'],
-                                ),
-                                RefRow(
-                                  No: data['index'],
-                                  Name: data['Donate'],
-                                  Number: data['DPhone'],
-                                  vwidth: vwidth,
-                                  ID: data['Money'],
+                                  Payment: data['Money'],
                                 ),
                               ],
                             );
@@ -192,14 +167,14 @@ class _CollectionState extends State<Collection> {
 
 class RefRow extends StatelessWidget {
   var No;
-  final String ID;
+  final String Payment;
   final String Name;
   final String Number;
   var vwidth;
   RefRow(
       {Key? key,
       required this.No,
-      required this.ID,
+      required this.Payment,
       required this.Name,
       required this.Number,
       required this.vwidth})
@@ -234,7 +209,7 @@ class RefRow extends StatelessWidget {
               width: 50,
               child: Center(
                 child: Text(
-                  ID,
+                  Payment,
                 ),
               ),
             ),

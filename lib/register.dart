@@ -217,12 +217,24 @@ class _RegistrationState extends State<Registration> {
                                       ),
                                     );
                                   },
-                                  child: const Text(
-                                    "I have an account? Login",
-                                    style: TextStyle(
-                                        fontSize: 12.0,
-                                        fontWeight: FontWeight.bold),
-                                  )),
+                                  child:                           Row(
+                            children: const [
+                              Text(
+                                "I have an account? ",
+                                style: TextStyle(
+                                    fontSize: 12.0,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              Text(
+                                "Sign In",
+                                style: TextStyle(
+                                    fontSize: 12.0,
+                                    color: Colors.purple,
+                                    decoration: TextDecoration.underline,
+                                    fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),),
                               const SizedBox(height: 50),
                             ],
                           ),

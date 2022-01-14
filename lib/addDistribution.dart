@@ -57,11 +57,13 @@ class _addDistributionState extends State<addDistribution> {
     final TextEditingController donatorcontroller = TextEditingController();
     final TextEditingController Moneycontroller = TextEditingController();
     final TextEditingController DPhonecontroller = TextEditingController();
+    final TextEditingController Reasoncontroller = TextEditingController();
 
     void UploadDistribution() async {
       String Donate = donatorcontroller.text;
       var Money = Moneycontroller.text;
       String DPhone = DPhonecontroller.text;
+      String Reason = Reasoncontroller.text;
       try {
         FirebaseFirestore firestore = FirebaseFirestore.instance;
         DateTime now = DateTime.now();
@@ -76,6 +78,7 @@ class _addDistributionState extends State<addDistribution> {
           "PhoneNo": PhoneNo,
           "Donate": Donate,
           "DPhone": DPhone,
+          "Reason": Reason,
           "Money": Money,
           "Date": formattedDate,
           "index": largeindex,
@@ -151,6 +154,14 @@ class _addDistributionState extends State<addDistribution> {
                     border: OutlineInputBorder(),
                     labelText: 'Phone No',
                     hintText: "Phone No"),
+              ),
+              _space,
+                            TextField(
+                controller: Reasoncontroller,
+                decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: 'Reason',
+                    hintText: "Reason"),
               ),
               _space,
               TextField(

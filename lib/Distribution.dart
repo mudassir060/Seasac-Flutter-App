@@ -71,9 +71,9 @@ class _DistributionState extends State<Distribution> {
                         ),
                         Container(
                           width: 50,
-                          child: Center(
+                          child: const Center(
                             child: Text(
-                              "ID",
+                              "Payment",
                               style: TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
@@ -116,6 +116,7 @@ class _DistributionState extends State<Distribution> {
                         var vwidth = MediaQuery.of(context).size.width;
                         var vhight = MediaQuery.of(context).size.height;
                         return ListView(
+                          shrinkWrap: true,
                           physics: const BouncingScrollPhysics(
                               parent: AlwaysScrollableScrollPhysics()),
                           controller: ScrollController(),
@@ -128,7 +129,7 @@ class _DistributionState extends State<Distribution> {
                               Name: data['Donate'],
                               Number: data['DPhone'],
                               vwidth: vwidth,
-                              ID: data['Money'],
+                              Payment: data['Money'],
                             );
                           }).toList(),
                         );
@@ -179,14 +180,14 @@ class _DistributionState extends State<Distribution> {
 
 class RefRow extends StatelessWidget {
   var No;
-  final String ID;
+  final String Payment;
   final String Name;
   final String Number;
   var vwidth;
   RefRow(
       {Key? key,
       required this.No,
-      required this.ID,
+      required this.Payment,
       required this.Name,
       required this.Number,
       required this.vwidth})
@@ -221,7 +222,7 @@ class RefRow extends StatelessWidget {
               width: 50,
               child: Center(
                 child: Text(
-                  ID,
+                  Payment,
                 ),
               ),
             ),
