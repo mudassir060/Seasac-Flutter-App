@@ -135,52 +135,54 @@ class _addCollectionState extends State<addCollection> {
                   Icons.arrow_back,
                 )),
         ),
-        body: Center(
-            child: Padding(
-          padding: const EdgeInsets.all(18.0),
-          child: Column(
-            children: [
-              _space,
-              const Text(
-                "Donator Details",
-                style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
-              ),
-              // // // // // // // // // // donatorcontroller input // // // // // // // // //
-              _space,
-              TextField(
-                controller: donatorcontroller,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Name',
-                    hintText: "Name"),
-              ),
-              _space,
-              TextField(
-                controller: DPhonecontroller,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Phone No',
-                    hintText: "Phone No"),
-              ),
-              _space,
-              TextField(
-                controller: Moneycontroller,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Money',
-                    hintText: "Money"),
-              ),
-              _space,
-              ElevatedButton(
-                child: const Text(
-                  'Upload',
-                  // style: TextStyle(fontSize: 10.0),
+        body: SingleChildScrollView(
+          child: Center(
+              child: Padding(
+            padding: const EdgeInsets.all(18.0),
+            child: Column(
+              children: [
+                _space,
+                const Text(
+                  "Donator Details",
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.bold),
                 ),
-                onPressed: UploadCollection,
-              ),
-            ],
-          ),
-        )),
+                // // // // // // // // // // donatorcontroller input // // // // // // // // //
+                _space,
+                TextField(
+                  controller: donatorcontroller,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Name',
+                      hintText: "Name"),
+                ),
+                _space,
+                TextField(
+                  controller: DPhonecontroller,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Phone No',
+                      hintText: "Phone No"),
+                ),
+                _space,
+                TextField(
+                  controller: Moneycontroller,
+                  decoration: const InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Money',
+                      hintText: "Money"),
+                ),
+                _space,
+                ElevatedButton(
+                  child: const Text(
+                    'Upload',
+                    // style: TextStyle(fontSize: 10.0),
+                  ),
+                  onPressed: UploadCollection,
+                ),
+              ],
+            ),
+          )),
+        ),
       ),
     );
   }

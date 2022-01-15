@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:seasac/Fulldetail.dart';
 import 'package:seasac/SplashScreen.dart';
 import 'package:seasac/addCollection.dart';
 import 'package:seasac/login.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return     MaterialApp(
+    return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Pay Per Click',
         theme: ThemeData(
@@ -27,12 +28,11 @@ class MyApp extends StatelessWidget {
             if (snapshot.hasError) {
               return const Text("Some thing Went Wrong");
             }
-
             // Once complete, show your application
             if (snapshot.connectionState == ConnectionState.done) {
-              return SplashScreen();
+              Map data = {};
+              return Fulldetail(data: data);
             }
-
             // Otherwise, show something whilst waiting for initialization to complete
             return const Center(child: CircularProgressIndicator());
           },

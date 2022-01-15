@@ -28,8 +28,8 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            width: 200,
-            height: 200,
+            width: 400,
+            height: 400,
             child: Image.asset('images/Logo.png'),
           ),
           // ignore: avoid_unnecessary_containers
@@ -39,19 +39,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 backgroundColor: Colors.black12,
             color: Colors.black54,
           )),
-          // Padding(
-          //   padding: const EdgeInsets.only(left:108.0, top: 30),
-          //   child: Container(
-          //       child: const Text(
-          //     "SEASAC Is Loading",
-          //     style: TextStyle(
-          //       fontSize: 20.0,
-          //       color: Colors.black,
-          //       fontWeight: FontWeight.bold,
-          //     ),
-          //   )),
-          // ),
-        
         ],
       ),
     ));

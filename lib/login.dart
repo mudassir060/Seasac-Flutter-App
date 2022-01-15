@@ -29,11 +29,11 @@ class _LoginState extends State<Login> {
       looding = true;
     });
     Map? UserData = {};
-        FirebaseAuth auth = FirebaseAuth.instance;
+    FirebaseAuth auth = FirebaseAuth.instance;
     FirebaseFirestore firestore = FirebaseFirestore.instance;
     final String useremail = useremailcontroller.text;
     final String userpassword = userpasswordcontroller.text;
-       try {
+    try {
       final UserCredential user = await auth.signInWithEmailAndPassword(
           email: useremail, password: userpassword);
       final DocumentSnapshot snapshot =
@@ -59,19 +59,20 @@ class _LoginState extends State<Login> {
         context,
         MaterialPageRoute(
           builder: (context) => BottomBar(
-              Name: Name,
-              Email: Email,
-              PhoneNo: PhoneNo,
-              UID : UID,),
+            Name: Name,
+            Email: Email,
+            PhoneNo: PhoneNo,
+            UID: UID,
+          ),
         ),
       );
-        setState(() {
-            looding = false;
-          });
+      setState(() {
+        looding = false;
+      });
     } catch (e) {
-              setState(() {
-            looding = false;
-          });
+      setState(() {
+        looding = false;
+      });
       print("Error ==============>$e");
       Widget okButton = TextButton(
         child: Text("OK"),
@@ -93,7 +94,6 @@ class _LoginState extends State<Login> {
         },
       );
     }
-
   }
 
   bool _obscureText = true;
@@ -225,12 +225,13 @@ class _LoginState extends State<Login> {
                                               fontSize: 12.0,
                                               fontWeight: FontWeight.bold),
                                         ),
-                                                                                Text(
+                                        Text(
                                           "Sign up",
                                           style: TextStyle(
                                               fontSize: 12.0,
                                               color: Colors.purple,
-                                            decoration: TextDecoration.underline,
+                                              decoration:
+                                                  TextDecoration.underline,
                                               fontWeight: FontWeight.bold),
                                         ),
                                       ],

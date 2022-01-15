@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:seasac/Fulldetail.dart';
 import 'package:seasac/addDistribution.dart';
 
 class Distribution extends StatefulWidget {
@@ -124,16 +125,22 @@ class _DistributionState extends State<Distribution> {
                             .map((DocumentSnapshot document) {
                           Map<String, dynamic> data =
                               document.data()! as Map<String, dynamic>;
-                          return Column(
-                            children: [
-                              RefRow(
-                                No: data['index'],
-                                Name: data['Donate'],
-                                Number: data['DPhone'],
-                                vwidth: vwidth,
-                                Payment: data['Money'],
-                              ),
-                            ],
+                          return InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => Fulldetail(data: data),
+                                ),
+                              );
+                            },
+                            child: RefRow(
+                              No: data['index'],
+                              Name: data['Donate'],
+                              Number: data['DPhone'],
+                              vwidth: vwidth,
+                              Payment: data['Money'],
+                            ),
                           );
                         }).toList(),
                       );
@@ -184,44 +191,47 @@ class RefRow extends StatelessWidget {
   Widget build(BuildContext context) {
     var colr = No % 2;
 
-    return Container(
-      color: colr == 1 ? Colors.black12 : Colors.black26,
-      width: vwidth - 15,
-      child: Padding(
-        padding: const EdgeInsets.only(top: 8, bottom: 8),
-        child: Row(
-          children: [
-            SizedBox(
-              width: 50,
-              child: Center(
-                child: Text(
-                  "$No",
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 4),
+      child: Container(
+        color: colr == 1 ? Colors.black12 : Colors.black26,
+        width: vwidth - 15,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 10, bottom: 10),
+          child: Row(
+            children: [
+              SizedBox(
+                width: 50,
+                child: Center(
+                  child: Text(
+                    "$No",
+                  ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: 100,
-              child: Text(
-                Name,
-              ),
-            ),
-            SizedBox(
-              width: 90,
-              child: Center(
+              SizedBox(
+                width: 100,
                 child: Text(
-                  Payment,
+                  Name,
                 ),
               ),
-            ),
-            SizedBox(
-              width: 100,
-              child: Center(
-                child: Text(
-                  Number,
+              SizedBox(
+                width: 90,
+                child: Center(
+                  child: Text(
+                    Payment,
+                  ),
                 ),
               ),
-            ),
-          ],
+              SizedBox(
+                width: 100,
+                child: Center(
+                  child: Text(
+                    Number,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
