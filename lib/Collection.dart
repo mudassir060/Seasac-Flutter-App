@@ -36,113 +36,113 @@ class _CollectionState extends State<Collection> {
         padding: const EdgeInsets.only(top: 10),
         child: Center(
           child: Container(
-              width: vwidth - 15,
-              // height: vwidth / 2,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  // // // // // // // // // heading Row  // // // // // // // // //
-                  Container(
-                    width: vwidth,
-                    child: Row(
-                      children: [
-                        Container(
-                          width: 60,
-                          child: Center(
-                            child: Text(
-                              "No",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: 150,
+            width: vwidth - 15,
+            // height: vwidth / 2,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                // // // // // // // // // heading Row  // // // // // // // // //
+                Container(
+                  width: vwidth,
+                  child: Row(
+                    children: [
+                      Container(
+                        width: 50,
+                        child: Center(
                           child: Text(
-                            "Name",
+                            "No",
                             style: TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        Container(
-                          width: 50,
-                          child: Center(
-                            child: Text(
-                              "Payment",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      ),
+                      Container(
+                        width: 100,
+                        child: Text(
+                          "Name",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                      Container(
+                        width: 90,
+                        child: Center(
+                          child: Text(
+                            "Payment",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                        Container(
-                          child: Center(
-                            child: Text(
-                              "Phone",
-                              style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
+                      ),
+                      Container(
+                        width: 100,
+                        child: Center(
+                          child: Text(
+                            "Phone",
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                  // // // // // // // // // List Row  // // // // // // // // //
-                  Container(
-                    width: vwidth,
-                    height: vhight - 200,
-                    child: StreamBuilder<QuerySnapshot>(
-                      stream: _CollectionStream,
-                      builder: (BuildContext context,
-                          AsyncSnapshot<QuerySnapshot> snapshot) {
-                        if (snapshot.hasError) {
-                          return Text('Something went wrong');
-                        }
-                        if (snapshot.connectionState ==
-                            ConnectionState.waiting) {
-                          return const Center(
-                            child: CircularProgressIndicator(),
-                          );
-                        }
-                        var Money;
-                        var vwidth = MediaQuery.of(context).size.width;
-                        var vhight = MediaQuery.of(context).size.height;
-                        return ListView(
-                  shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(
-                              parent: AlwaysScrollableScrollPhysics()),
-                          controller: ScrollController(),
-                          children: snapshot.data!.docs
-                              .map((DocumentSnapshot document) {
-                            Map<String, dynamic> data =
-                                document.data()! as Map<String, dynamic>;
-                            return Column(
-                              children: [
-                                RefRow(
-                                  No: data['index'],
-                                  Name: data['Donate'],
-                                  Number: data['DPhone'],
-                                  vwidth: vwidth,
-                                  Payment: data['Money'],
-                                ),
-                              ],
-                            );
-                          }).toList(),
+                ),
+                // // // // // // // // // List Row  // // // // // // // // //
+                Container(
+                  width: vwidth,
+                  height: vhight - 200,
+                  child: StreamBuilder<QuerySnapshot>(
+                    stream: _CollectionStream,
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      if (snapshot.hasError) {
+                        return Text('Something went wrong');
+                      }
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
                         );
-                      },
-                    ),
+                      }
+                      var Money;
+                      var vwidth = MediaQuery.of(context).size.width;
+                      var vhight = MediaQuery.of(context).size.height;
+                      return ListView(
+                        shrinkWrap: true,
+                        physics: const BouncingScrollPhysics(
+                            parent: AlwaysScrollableScrollPhysics()),
+                        controller: ScrollController(),
+                        children: snapshot.data!.docs
+                            .map((DocumentSnapshot document) {
+                          Map<String, dynamic> data =
+                              document.data()! as Map<String, dynamic>;
+                          return Column(
+                            children: [
+                              RefRow(
+                                No: data['index'],
+                                Name: data['Donate'],
+                                Number: data['DPhone'],
+                                vwidth: vwidth,
+                                Payment: data['Money'],
+                              ),
+                            ],
+                          );
+                        }).toList(),
+                      );
+                    },
                   ),
-                ],
-              ),
-              ),
+                ),
+              ],
+            ),
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -192,7 +192,7 @@ class RefRow extends StatelessWidget {
         child: Row(
           children: [
             SizedBox(
-              width: 60,
+              width: 50,
               child: Center(
                 child: Text(
                   "$No",
@@ -200,13 +200,13 @@ class RefRow extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 150,
+              width: 100,
               child: Text(
                 Name,
               ),
             ),
             SizedBox(
-              width: 50,
+              width: 90,
               child: Center(
                 child: Text(
                   Payment,
@@ -214,6 +214,7 @@ class RefRow extends StatelessWidget {
               ),
             ),
             SizedBox(
+              width: 100,
               child: Center(
                 child: Text(
                   Number,

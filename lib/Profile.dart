@@ -36,6 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
   var Balance = 0;
 
   data() async {
+    print("Runing......");
     await firestore
         .collection("Collection")
         .get()
@@ -61,6 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
     Balance = Collection - Distribution;
   }
 
+  @override
   void initState() {
     super.initState();
     WidgetsBinding.instance?.addPostFrameCallback((_) => data());

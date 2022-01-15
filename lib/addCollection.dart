@@ -62,7 +62,10 @@ class _addCollectionState extends State<addCollection> {
       String Donate = donatorcontroller.text;
       var Money = Moneycontroller.text;
       String DPhone = DPhonecontroller.text;
-      try {
+      if (Donate != "" &&
+          DPhone != "" &&
+          int.parse(Money).runtimeType == int) {
+        try {
         FirebaseFirestore firestore = FirebaseFirestore.instance;
         DateTime now = DateTime.now();
         String formattedDate = DateFormat('kk:mm:ss EEE d MMM').format(now);
@@ -80,18 +83,14 @@ class _addCollectionState extends State<addCollection> {
           "Date": formattedDate,
           "index": largeindex,
         });
-        // Navigator.pushReplacementNamed(context, '/Home', arguments: {
-        //   'Name': username,
-        //   'Email': useremail,
-        //   'PhoneNo': PhoneNo
-        // });
-
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text('Data is Uploaded'),
-            duration: Duration(seconds: 1),
+            duration: Duration(seconds: 3),
           ),
         );
+        Navigator.of(context).pop(); 
+
       } catch (e) {
         print("Error ==============>$e");
         Widget okButton = TextButton(
@@ -114,6 +113,7 @@ class _addCollectionState extends State<addCollection> {
           },
         );
       }
+}
       // print([username, useremail, userpassword]);
     }
 
@@ -125,6 +125,16 @@ class _addCollectionState extends State<addCollection> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+        appBar: AppBar(
+          title: const Text("Donator Form"),
+             leading: IconButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                icon: const Icon(
+                  Icons.arrow_back,
+                )),
+        ),
         body: Center(
             child: Padding(
           padding: const EdgeInsets.all(18.0),

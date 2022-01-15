@@ -129,53 +129,71 @@ class _BottomBarState extends State<BottomBar> {
         widget.PhoneNo,
       });
     }
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.lightBlue,
-      ),
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            "Seasac",
-            style: TextStyle(color: Colors.white),
+    if (_pageIndex == 0) {
+      setState(() {
+        Titel = "Collection";
+      });
+    }
+    if (_pageIndex == 1) {
+      setState(() {
+        Titel = "Distribution";
+      });
+    }
+    if (_pageIndex == 2) {
+      setState(() {
+        Titel = "Profile";
+      });
+    }
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.lightBlue,
+        ),
+        home: Scaffold(
+          appBar: AppBar(
+            title: Text(
+              Titel,
+              style: TextStyle(color: Colors.white),
+            ),
+            centerTitle: true,
+            // leading: IconButton(
+            //     onPressed: () {
+            //       Navigator.push(
+            //         context,
+            //         MaterialPageRoute(
+            //           builder: (context) => BottomBar(
+            //             Name: widget.Name,
+            //             Email: widget.Email,
+            //             PhoneNo: widget.PhoneNo,
+            //             UID: widget.UID,
+            //           ),
+            //         ),
+            //       );
+            //     },
+            //     icon: const Icon(
+            //       Icons.arrow_back,
+            //     )),
           ),
-          centerTitle: true,
-          // leading: IconButton(
-          //     onPressed: () {
-          //       Navigator.push(
-          //         context,
-          //         MaterialPageRoute(
-          //           builder: (context) => BottomBar(
-          //             Name: widget.Name,
-          //             Email: widget.Email,
-          //             PhoneNo: widget.PhoneNo,
-          //             UID: widget.UID,
-          //           ),
-          //         ),
-          //       );
-          //     },
-          //     icon: const Icon(
-          //       Icons.arrow_back,
-          //     )),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _pageIndex,
-          onTap: onTabTapped,
-          backgroundColor: Colors.white,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-                icon: Icon(Icons.home), title: Text("Collection")),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.dashboard), title: Text("Distribution")),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.person), title: Text("Profile")),
-          ],
-        ),
-        body: PageView(
-          children: tabPages,
-          onPageChanged: onPageChanged,
-          controller: _pageController,
+          bottomNavigationBar: BottomNavigationBar(
+            currentIndex: _pageIndex,
+            onTap: onTabTapped,
+            backgroundColor: Colors.white,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home), title: Text("Collection")),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.dashboard), title: Text("Distribution")),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person), title: Text("Profile")),
+            ],
+          ),
+          body: PageView(
+            children: tabPages,
+            onPageChanged: onPageChanged,
+            controller: _pageController,
+          ),
         ),
       ),
     );
