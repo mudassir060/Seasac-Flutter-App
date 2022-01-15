@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:seasac/Fulldetail.dart';
+import 'package:seasac/DFulldetail.dart';
 import 'package:seasac/addDistribution.dart';
 
 class Distribution extends StatefulWidget {
@@ -130,7 +130,7 @@ class _DistributionState extends State<Distribution> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Fulldetail(data: data),
+                                  builder: (context) => DFulldetail(data: data),
                                 ),
                               );
                             },

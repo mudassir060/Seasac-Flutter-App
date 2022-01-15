@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:seasac/Fulldetail.dart';
+import 'package:seasac/CFulldetail.dart';
 import 'package:seasac/addCollection.dart';
 
 class Collection extends StatefulWidget {
@@ -130,7 +130,7 @@ class _CollectionState extends State<Collection> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Fulldetail(data: data),
+                                  builder: (context) => CFulldetail(data: data),
                                 ),
                               );
                             },
