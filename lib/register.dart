@@ -65,6 +65,7 @@ class _RegistrationState extends State<Registration> {
                 Name: username,
                 Email: useremail,
                 PhoneNo: PhoneNo,
+                Admin : Admin,
               ),
             ),
           );

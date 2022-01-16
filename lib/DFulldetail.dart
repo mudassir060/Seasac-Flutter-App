@@ -85,7 +85,7 @@ class _DFulldetailState extends State<DFulldetail> {
                 _Row(titel: "PhoneNo", value: "${widget.data["PhoneNo"]}"),
                 _Row(titel: "Email", value: "${widget.data["email"]}"),
                 _line,
-                Text(
+                const Text(
                   "Reciver Detail",
                   style: TextStyle(
                       fontSize: 16,
@@ -96,7 +96,7 @@ class _DFulldetailState extends State<DFulldetail> {
                 _Row(titel: "Phone No", value: "${widget.data["DPhone"]}"),
                 _line,
 
-                Text(
+                const Text(
                   "Reason",
                   style: TextStyle(
                       fontSize: 16,

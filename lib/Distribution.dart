@@ -7,11 +7,12 @@ class Distribution extends StatefulWidget {
   final String Name;
   final String Email;
   final String PhoneNo;
-  Distribution({
-    required this.Name,
-    required this.Email,
-    required this.PhoneNo,
-  });
+  final bool Admin;
+  Distribution(
+      {required this.Name,
+      required this.Email,
+      required this.PhoneNo,
+      required this.Admin});
 
   @override
   _DistributionState createState() => _DistributionState();
@@ -154,16 +155,22 @@ class _DistributionState extends State<Distribution> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => addDistribution(
-                Name: widget.Name,
-                Email: widget.Email,
-                PhoneNo: widget.PhoneNo,
-              ),
-            ),
-          );
+          widget.Admin
+              ? Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => addDistribution(
+                      Name: widget.Name,
+                      Email: widget.Email,
+                      PhoneNo: widget.PhoneNo,
+                    ),
+                  ))
+              : ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('You have no admin rights.'),
+                    duration: Duration(seconds: 3),
+                  ),
+                );
         },
         tooltip: 'Distribution',
         child: const Icon(Icons.add),

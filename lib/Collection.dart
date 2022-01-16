@@ -7,10 +7,12 @@ class Collection extends StatefulWidget {
   final String Name;
   final String Email;
   final String PhoneNo;
+  final bool Admin;
   Collection({
     required this.Name,
     required this.Email,
     required this.PhoneNo,
+    required this.Admin,
   });
 
   @override
@@ -154,16 +156,23 @@ class _CollectionState extends State<Collection> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => addCollection(
-                Name: widget.Name,
-                Email: widget.Email,
-                PhoneNo: widget.PhoneNo,
-              ),
-            ),
-          );
+          widget.Admin
+              ? Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => addCollection(
+                      Name: widget.Name,
+                      Email: widget.Email,
+                      PhoneNo: widget.PhoneNo,
+                    ),
+                  ),
+                )
+              : ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Text('You have no admin rights.'),
+                    duration: Duration(seconds: 3),
+                  ),
+                );
         },
         tooltip: 'Collection',
         child: const Icon(Icons.add),

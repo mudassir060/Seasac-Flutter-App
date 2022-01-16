@@ -63,6 +63,7 @@ class _LoginState extends State<Login> {
             Email: Email,
             PhoneNo: PhoneNo,
             UID: UID,
+            Admin: UserData!["Admin"],
           ),
         ),
       );

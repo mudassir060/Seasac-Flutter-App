@@ -73,15 +73,17 @@ class BottomBar extends StatefulWidget {
   final String Email;
   final String UID;
   final String PhoneNo;
+  final bool Admin;
   const BottomBar(
       {Key? key,
       required this.Name,
       required this.Email,
       required this.PhoneNo,
-      required this.UID})
+      required this.UID,
+      required this.Admin})
       : super(key: key);
   @override
-  _BottomBarState createState() => new _BottomBarState();
+  _BottomBarState createState() => _BottomBarState();
 }
 
 class _BottomBarState extends State<BottomBar> {
@@ -108,11 +110,13 @@ class _BottomBarState extends State<BottomBar> {
         Name: widget.Name,
         Email: widget.Email,
         PhoneNo: widget.PhoneNo,
+        Admin: widget.Admin,
       ),
       Distribution(
         Name: widget.Name,
         Email: widget.Email,
         PhoneNo: widget.PhoneNo,
+                Admin: widget.Admin,
       ),
       ProfilePage(
           Name: widget.Name,

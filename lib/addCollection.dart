@@ -17,6 +17,9 @@ class addCollection extends StatefulWidget {
 }
 
 class _addCollectionState extends State<addCollection> {
+  final TextEditingController donatorcontroller = TextEditingController();
+  final TextEditingController Moneycontroller = TextEditingController();
+  final TextEditingController DPhonecontroller = TextEditingController();
   int largeindex = 0;
   @override
   Widget build(BuildContext context) {
@@ -54,66 +57,60 @@ class _addCollectionState extends State<addCollection> {
     });
     var vwidth = MediaQuery.of(context).size.width;
     var vhight = MediaQuery.of(context).size.height;
-    final TextEditingController donatorcontroller = TextEditingController();
-    final TextEditingController Moneycontroller = TextEditingController();
-    final TextEditingController DPhonecontroller = TextEditingController();
 
     void UploadCollection() async {
       String Donate = donatorcontroller.text;
       var Money = Moneycontroller.text;
       String DPhone = DPhonecontroller.text;
-      if (Donate != "" &&
-          DPhone != "" &&
-          int.parse(Money).runtimeType == int) {
+      if (Donate != "" && DPhone != "" && int.parse(Money).runtimeType == int) {
         try {
-        FirebaseFirestore firestore = FirebaseFirestore.instance;
-        DateTime now = DateTime.now();
-        String formattedDate = DateFormat('kk:mm:ss EEE d MMM').format(now);
-        print(formattedDate);
-        await firestore
-            .collection("Collection")
-            .doc(UserName + formattedDate)
-            .set({
-          "username": UserName,
-          "email": UserEmail,
-          "PhoneNo": PhoneNo,
-          "Donate": Donate,
-          "DPhone": DPhone,
-          "Money": Money,
-          "Date": formattedDate,
-          "index": largeindex,
-        });
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Data is Uploaded'),
-            duration: Duration(seconds: 3),
-          ),
-        );
-        Navigator.of(context).pop(); 
-
-      } catch (e) {
-        print("Error ==============>$e");
-        Widget okButton = TextButton(
-          child: Text("OK"),
-          onPressed: () {
-            Navigator.of(context).pop(); // dismiss dialog
-          },
-        );
-        AlertDialog alert = AlertDialog(
-          title: Center(child: Text("Error")),
-          content: Text("$e"),
-          actions: [
-            okButton,
-          ],
-        );
-        showDialog(
-          context: context,
-          builder: (BuildContext context) {
-            return alert;
-          },
-        );
+          FirebaseFirestore firestore = FirebaseFirestore.instance;
+          DateTime now = DateTime.now();
+          String formattedDate = DateFormat('kk:mm:ss EEE d MMM').format(now);
+          print(formattedDate);
+          await firestore
+              .collection("Collection")
+              .doc(UserName + formattedDate)
+              .set({
+            "username": UserName,
+            "email": UserEmail,
+            "PhoneNo": PhoneNo,
+            "Donate": Donate,
+            "DPhone": DPhone,
+            "Money": Money,
+            "Date": formattedDate,
+            "index": largeindex,
+          });
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Data is Uploaded'),
+              duration: Duration(seconds: 3),
+            ),
+          );
+          Navigator.of(context).pop();
+        } catch (e) {
+          print("Error ==============>$e");
+          Widget okButton = TextButton(
+            child: Text("OK"),
+            onPressed: () {
+              Navigator.of(context).pop(); // dismiss dialog
+            },
+          );
+          AlertDialog alert = AlertDialog(
+            title: Center(child: Text("Error")),
+            content: Text("$e"),
+            actions: [
+              okButton,
+            ],
+          );
+          showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return alert;
+            },
+          );
+        }
       }
-}
       // print([username, useremail, userpassword]);
     }
 
@@ -127,13 +124,13 @@ class _addCollectionState extends State<addCollection> {
       home: Scaffold(
         appBar: AppBar(
           title: const Text("Donator Form"),
-             leading: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: const Icon(
-                  Icons.arrow_back,
-                )),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: const Icon(
+                Icons.arrow_back,
+              )),
         ),
         body: SingleChildScrollView(
           child: Center(
@@ -191,4 +188,3 @@ class _addCollectionState extends State<addCollection> {
 Widget get _space => const SizedBox(
       height: 20,
     );
-

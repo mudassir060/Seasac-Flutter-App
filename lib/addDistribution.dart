@@ -18,6 +18,10 @@ class addDistribution extends StatefulWidget {
 }
 
 class _addDistributionState extends State<addDistribution> {
+  final TextEditingController Distributioncontroller = TextEditingController();
+  final TextEditingController Moneycontroller = TextEditingController();
+  final TextEditingController DPhonecontroller = TextEditingController();
+  final TextEditingController Reasoncontroller = TextEditingController();
   int largeindex = 0;
   @override
   Widget build(BuildContext context) {
@@ -55,10 +59,6 @@ class _addDistributionState extends State<addDistribution> {
     });
     var vwidth = MediaQuery.of(context).size.width;
     var vhight = MediaQuery.of(context).size.height;
-    final TextEditingController Distributioncontroller = TextEditingController();
-    final TextEditingController Moneycontroller = TextEditingController();
-    final TextEditingController DPhonecontroller = TextEditingController();
-    final TextEditingController Reasoncontroller = TextEditingController();
 
     void UploadDistribution() async {
       String Donate = Distributioncontroller.text;
@@ -119,12 +119,12 @@ class _addDistributionState extends State<addDistribution> {
           );
         }
       } else {
-                  ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('All fields are required'),
-              duration: Duration(seconds: 1),
-            ),
-          );
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('All fields are required'),
+            duration: Duration(seconds: 1),
+          ),
+        );
       }
       // print([username, useremail, userpassword]);
     }
@@ -137,15 +137,15 @@ class _addDistributionState extends State<addDistribution> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-                appBar: AppBar(
+        appBar: AppBar(
           title: const Text("Distribution Form"),
-             leading: IconButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                icon: const Icon(
-                  Icons.arrow_back,
-                )),
+          leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: const Icon(
+                Icons.arrow_back,
+              )),
         ),
         body: SingleChildScrollView(
           child: Center(
